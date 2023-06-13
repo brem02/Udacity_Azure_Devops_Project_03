@@ -22,9 +22,9 @@ resource "azurerm_linux_virtual_machine" "test" {
   admin_ssh_key {
     username   = var.admin_username
     #Local ssh deployment
-    #public_key = file("~/.ssh/id_rsa.pub")
+    public_key = file("~/.ssh/id_rsa.pub")
     #Azure ssh deployment Ubuntu
-    public_key = file("C/Users/BREM02/ssh/id_rsa")
+    #public_key = file("C/Users/BREM02/ssh/id_rsa.pub")
     # for running in Pipeline use actual key: SHA256:oxK/gOpOi0Jzx9ivzeE/51Zlmvt6HTJOFJUB6MptVxw BGROUP+BREM02@ASY-9358184032
     #Azure ssh deployment Windows
     #public_key = file("D:/a/_temp/id_rsa")
