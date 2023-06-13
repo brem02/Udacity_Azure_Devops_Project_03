@@ -5,9 +5,9 @@ client_secret = "bgr8Q~bkfsXbAbD6b.JxMPRIuUnpe3uca-ca_ao6"
 tenant_id = "f958e84a-92b8-439f-a62d-4f45996b6d07"
 
 # Resource Group/Location
-location = "southcentralus"
-resource_group = "udacityrg"
-application_type = "udacitytest"
+location = "EAST US"
+resource_group = "Azuredevops"
+application_type = "myApplication"
 
 # Network
 virtual_network_name = "vnetudacity"
