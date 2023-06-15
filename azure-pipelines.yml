@@ -1,7 +1,5 @@
 name: Azure Pipelines
-#trigger:
-#- main
-#pool: myAgentPool
+
 stages:
   - stage: "Provisioning"
     jobs:
