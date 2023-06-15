@@ -1,11 +1,13 @@
 name: Azure Pipelines
-
+#trigger:
+#- main
+#pool: myAgentPool
 stages:
   - stage: "Provisioning"
     jobs:
       - job: provision_infrastructure
         displayName: "Provision infrastructure"
-        pool:
+        pool: myAgentPool
           vmimage: "ubuntu-18.04"
         steps:
           - task: DownloadSecureFile@1
@@ -67,7 +69,7 @@ stages:
     jobs:
       - job: build_artifacts
         displayName: "Build artifacts"
-        pool:
+        pool: myAgentPool
           vmImage: "ubuntu-18.04"
         steps:
           - task: ArchiveFiles@2
