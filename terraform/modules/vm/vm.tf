@@ -17,7 +17,7 @@ resource "azurerm_linux_virtual_machine" "test" {
   resource_group_name = var.resource_group
   size                = "Standard_B1s"
   admin_username                  = var.admin_username
-  admin_password                  = var.password
+  admin_password                  = var.admin_password
   disable_password_authentication = false
   network_interface_ids = [azurerm_network_interface.test.id]
 
