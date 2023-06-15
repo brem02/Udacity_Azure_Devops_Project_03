@@ -6,7 +6,7 @@ stages:
       - job: provision_infrastructure
         displayName: "Provision infrastructure"
         pool: myAgentPool
-          vmimage: ubuntu-18.04
+          #vmimage: ubuntu-18.04
         steps:
           - task: DownloadSecureFile@1
             displayName: "Download terraform.tfvars file"
