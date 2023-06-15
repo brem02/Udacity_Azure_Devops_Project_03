@@ -99,5 +99,3 @@ stages:
             inputs:
               targetPath: "$(Build.ArtifactStagingDirectory)/selenium-$(Build.BuildId).zip"
               artifactName: "selenium"
-
- 
