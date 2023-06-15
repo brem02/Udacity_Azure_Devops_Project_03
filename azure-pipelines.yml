@@ -68,7 +68,7 @@ stages:
       - job: build_artifacts
         displayName: "Build artifacts"
         pool: myAgentPool
-          vmImage: "ubuntu-18.04"
+          #vmImage: "ubuntu-18.04"
         steps:
           - task: ArchiveFiles@2
             displayName: "Archive FakeRestAPI"
