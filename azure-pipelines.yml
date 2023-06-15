@@ -8,7 +8,7 @@ stages:
       - job: provision_infrastructure
         displayName: "Provision infrastructure"
         pool: myAgentPool
-          vmimage: "ubuntu-18.04"
+          vmimage: 'ubuntu-18.04'
         steps:
           - task: DownloadSecureFile@1
             displayName: "Download terraform.tfvars file"
@@ -27,7 +27,7 @@ stages:
           - task: TerraformInstaller@0
             displayName: "Install Terraform"
             inputs:
-              terraformVersion: "0.14.11"
+              terraformVersion: '0.14.11'
 
           - task: TerraformTaskV1@0
             displayName: "Terraform init"
