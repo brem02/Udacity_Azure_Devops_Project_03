@@ -105,7 +105,7 @@ stages:
       - deployment: deploy_fakerestapi
         displayName: "Deploy FakeRestAPI"
         pool: myAgentPool
-          vmImage: "ubuntu-18.04"
+          # vmImage: "ubuntu-18.04"
         environment: "Test Linux"
         strategy:
           runOnce:
