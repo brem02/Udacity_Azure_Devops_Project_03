@@ -60,7 +60,7 @@ module "vm" {
   resource_group       = module.resource_group.resource_group_name
   subnet_id            = module.network.subnet_id_test
   public_ip_address_id = module.publicip.public_ip_address_id 
-  admin_username       = var.admin_username
-  admin_password       = var.admin_password  
-  prefix               = var.prefix
+  admin_username       = "${var.admin_username}"  
+  admin_password       = "${var.admin_password}"  
+  prefix               = "${var.prefix}"
 }
