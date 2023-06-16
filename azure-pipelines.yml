@@ -116,7 +116,7 @@ stages:
                   inputs:
                     azureSubscription: "myServiceConnection"
                     appType: "webAppLinux"
-                    appName: "WebApplication-AppService"
+                    appName: "WebApp-AppService"
                     package: "$(Pipeline.Workspace)/fakerestapi/fakerestapi-$(Build.BuildId).zip"
                     deploymentMethod: "auto"
 
