@@ -114,7 +114,7 @@ stages:
                 - task: AzureWebApp@1
                   displayName: "Deploy Azure WebApp"
                   inputs:
-                    azureSubscription: "UdacityDS - 54"
+                    azureSubscription: "myServiceConnection"
                     appType: "webAppLinux"
                     appName: "WebApplication-AppService"
                     package: "$(Pipeline.Workspace)/fakerestapi/fakerestapi-$(Build.BuildId).zip"
