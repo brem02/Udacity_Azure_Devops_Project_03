@@ -16,9 +16,12 @@ def login(driver, user, password):
     """Login to the website"""
     log_status('Navigating to the demo page to login.')
     driver.get(URL_LOGIN)
-    driver.find_element_by_id("user-name").send_keys(user)
-    driver.find_element_by_id("password").send_keys(password)
-    driver.find_element_by_id("login-button").click()
+    driver.driver.find_element("id", "user-name").send_keys(user)
+    #driver.find_element_by_id("user-name").send_keys(user)
+    driver.driver.find_element("id", "password").send_keys(password)
+    #driver.find_element_by_id("password").send_keys(password)
+    driver.driver.find_element("id", "login-button").click()
+    #driver.find_element_by_id("login-button").click()
     assert URL_INVENTORY in driver.current_url
     log_status(f"Login with username {user} and password {password} successful")
 
