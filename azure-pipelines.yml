@@ -98,7 +98,7 @@ stages:
             displayName: "Publish Selenium"
             inputs:
               targetPath: "$(Build.ArtifactStagingDirectory)/selenium-$(Build.BuildId).zip"
-              artifactName: "selenium"
+              artifactName: "drop-selenium"
 
   - stage: "Deploy"
     jobs:
