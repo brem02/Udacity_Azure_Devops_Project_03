@@ -30,37 +30,37 @@ def add_items(driver):
     """Add items to the cart"""
     cart = []
     log_status('Add all items to the cart')
-    items = driver.find_elements_by_class_name('inventory_item')
+    items = driver.find_elements("class_name","inventory_item")
     for item in items:
-        item_name = item.find_element_by_class_name('inventory_item_name').text
+        item_name = item.find_element("class_name","inventory_item_name").text
         cart.append(item_name)
-        item.find_element_by_class_name('btn_inventory').click()
+        item.find_element("class_name","btn_inventory").click()
         log_status(f'Added {item_name}')
-    cart_item = driver.find_element_by_class_name('shopping_cart_badge')
+    cart_item = driver.find_element("class_name","shopping_cart_badge")
     assert int(cart_item.text) == len(items)
 
-    driver.find_element_by_class_name('shopping_cart_link').click()
+    driver.find_element("class_name","shopping_cart_link").click()
     assert URL_CART in driver.current_url
 
-    for item in driver.find_elements_by_class_name('inventory_item_name'):
+    for item in driver.find_elements("class_name","inventory_item_name"):
         assert item.text in cart
     log_status('Finished testing adding items to the cart')
 
 
 def remove_items(driver):
     """Remove items from the cart"""
-    driver.find_element_by_class_name('shopping_cart_link').click()
+    driver.find_element("class_name","shopping_cart_link").click()
     assert URL_CART in driver.current_url
 
-    cart_items = len(driver.find_elements_by_class_name('cart_item'))
+    cart_items = len(driver.find_elements("class_name","cart_item"))
 
     log_status(f"Number of items in the cart = {cart_items}")
-    for item in driver.find_elements_by_class_name('cart_item'):
-        item_name = item.find_element_by_class_name('inventory_item_name').text
-        item.find_element_by_class_name('cart_button').click()
+    for item in driver.find_elements("class_name","cart_item"):
+        item_name = item.find_element("class_name","inventory_item_name").text
+        item.find_element("class_name","cart_button").click()
         log_status(f'Removed {item_name}')
 
-    cart_items = len(driver.find_elements_by_class_name('cart_item'))
+    cart_items = len(driver.find_elements("class_name","cart_item"))
     assert cart_items == 0
     log_status('Finshed testing removing items from the cart')
 
