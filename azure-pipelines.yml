@@ -180,7 +180,7 @@ stages:
                   targetPath: '$(System.DefaultWorkingDirectory)/log/selenium/selenium-test.log'
                   artifactName: 'drop-selenium-logs'
 
-    jobs:
+    - job: build_artifacts
       displayName: Test JMeter
       pool: myAgentPool
       #vmImage: 'ubuntu-18.04'
