@@ -6,7 +6,6 @@ stages:
       - job: provision_infrastructure
         displayName: "Provision Infrastructure"
         pool: myAgentPool
-          #vmimage: ubuntu-18.04
         steps:
           - task: DownloadSecureFile@1
             displayName: "Download terraform.tfvars file"
@@ -68,7 +67,6 @@ stages:
       - job: build_artifacts
         displayName: "Build Artifacts"
         pool: myAgentPool
-          #vmImage: "ubuntu-18.04"
         steps:
           - task: ArchiveFiles@2
             displayName: "Archive FakeRestAPI"
@@ -183,7 +181,6 @@ stages:
       - job: TestJMeter
         displayName: Test JMeter
         pool: myAgentPool
-        #vmImage: 'ubuntu-18.04'
         steps:
         - bash: |
             sudo apt-get install openjdk-11-jre-headless -y
@@ -221,7 +218,7 @@ stages:
             archiveFile: '$(System.DefaultWorkingDirectory)/log/jmeter/endurance-test-html-report-$(Build.BuildId).zip'
             verbose: true
         - task: PublishPipelineArtifact@1
-          displayName: Publish JMeter logs
+          displayName: Publish JMeter Logs
           inputs:
             targetPath: '$(System.DefaultWorkingDirectory)/log/jmeter'
             artifactName: 'drop-jmeter-logs'
@@ -229,7 +226,6 @@ stages:
       - job: TestNewman
         displayName: Test Postman with Newman CLI
         pool: myAgentPool 
-          #vmImage: 'ubuntu-18.04'
         steps: 
         - task: NodeTool@0
           displayName: Install Node v12.X
