@@ -102,9 +102,9 @@ We are ready to run the Provision stage of our pipeline.
 
 If all the configuration was correct, then the terraform apply command should be successful, and our resources should be deployed to the cloud.
 
-CHECKED until HERE
+![Terraform_Apply](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/111d9492-6f8c-4dd6-b33f-58d93548eec5)
 
-![Terraform Apply](images/terraformapply.PNG)
+CHECKED until HERE
 
 ## Configure Pipeline Environment
 After Terraform deploys the VM in Azure we need to manually register the Virtual Machine in Pipelines -> Environments -> TEST -> Add resource -> Virtual Machines -> Linux. Then copy the registration script and manually ssh into the virtual machine, paste it on the terminal and run it.
