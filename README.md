@@ -143,7 +143,7 @@ In the Pipeline run we can check the logs of the publishing of the test results.
 ## Create a Selenium test for a website
 For this part of the project we will use selenium-test.py file and run it in a "headless" mode.
 
-We included the website https://www.saucedemo.com/ in order to test login, add 6 items to cart and remove those 6 items afterwards.
+We included the website https://www.saucedemo.com/ in order to test login, adding 6 items to cart and removing those 6 items afterwards.
 
 In the Azure Pipeline Job section we can check the logs of the Selenium Test.
 
