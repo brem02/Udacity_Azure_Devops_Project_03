@@ -135,26 +135,19 @@ In the Pipeline run we can check the logs of the publishing of the test results.
 ![Postman_Publishing](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/5b2cc7ea-5c77-492f-b695-d1647ebec745)
 
 
-
 ## Create a Selenium test for a website
-For the next part of the project we will explain our tests that can be found on the selenium-test.py file.
+For this part of the project we will use selenium-test.py file and run it in a "headless" mode.
 
-First we have to create our tests and later configure them to run in "headless" mode, if you are running the file on a pc, comment this lines in the ```selenium-test.py``` file:
-```Python
-options = ChromeOptions()
-options.add_argument("--headless") 
-driver = webdriver.Chrome(options=options)
-```
+We included the website https://www.saucedemo.com/ in order to test login, add 6 items to cart and remove those 6 items afterwards.
 
-For this tests we used the website https://www.saucedemo.com/, we tested login, adding 6 items to cart and removing those 6 items.
+In the Azure Pipeline Job section we can check the logs of the Selenium Test.
 
-In the Azure Pipeline Job section we can check the logs of the Selenium Test
-
-![Selenium Logs in Job for Python](images/seleniumlogs1.PNG)
+![Selenium_Test_Result](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/3b8a9e29-3914-435a-af6e-e31e890ada44)
 
 We also defined an artifact that contains the logs for all Selenium runs.
 
-![Selenium Logs in Job for artifact](images/seleniumlogs2.PNG)
+![Selenium_Publishing](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/115d5423-ff50-4d07-a530-2cc77045e036)
+
 
 ## Create a Test Suite with JMeter
 In this step we will create both endurance tests and stress tests with Apache JMeter.
