@@ -7,7 +7,6 @@
 * [Configure storage account and state backend for Terraform](#Configure-storage-account-and-state-backend-for-Terraform)
 * [Create a Service Principal for Terraform](#Create-a-Service-Principal-for-Terraform)
 * [Configure Pipeline Environment](#Configure-Pipeline-Environment)
-* [Configure an Azure Log Analytics Workspace](#Configure-an-azure-log-analytics-workspace)
 * [Create Postman Test Suites](#Create-Postman-Test-Suites)
 * [Create a Selenium test for a website](#Create-a-Selenium-test-for-a-website)
 * [Create a Test Suite with JMeter](#Create-a-Test-Suite-with-JMeter)
@@ -104,33 +103,16 @@ If all the configuration was correct, then the terraform apply command should be
 
 ![Terraform_Apply](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/111d9492-6f8c-4dd6-b33f-58d93548eec5)
 
-CHECKED until HERE
 
 ## Configure Pipeline Environment
-After Terraform deploys the VM in Azure we need to manually register the Virtual Machine in Pipelines -> Environments -> TEST -> Add resource -> Virtual Machines -> Linux. Then copy the registration script and manually ssh into the virtual machine, paste it on the terminal and run it.
+After Terraform deploys the VM in Azure we need to manually register the Virtual Machine in Pipelines -> Environments -> TEST -> Add resource -> Virtual Machines -> Linux. Then copy the registration script and manually log into the virtual machine (via SSH), paste it in and run the script.
 
-![Environment Virtual Machine Configuration](images/environmentvm.PNG)
+![Create_Environment](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/6ba93d39-cdef-48ef-a67c-512bc09b4b87)
 
-This enables Azure Pipelines to run commands in that Virtual Machine. After a successful Deploy run, it should look something like this:
+![Configure_Environment](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/f918fd80-a4d2-40b1-9f9c-024584f37d1e)
 
-![Test Environment](images/testenvironment.PNG)
+This enables Azure Pipelines to run commands in that Virtual Machine. 
 
-## Configure an Azure Log Analytics Workspace
-To run the Deploy stage of our pipeline we must configure an Azure Log Analytics Workspace before running the Deploy Virtual Machine task. To do this run the ```setup-log-analytics.sh``` file in the deployments directory, modify as needed and refer to the official Microsoft documentation if needed: https://docs.microsoft.com/en-us/azure/azure-monitor/logs/quick-create-workspace-cli
-
-After that, navigate to the Azure Portal, go to the resource group where the Workspace was created, click on the resource and navigate to Settings -> Agents Management.
-
-![Log Analytics Agents Management](images/loganalyticsagentsmanagement.PNG)
-
-Navigate to Linux Servers and there will be the script to install the Linux Agent in our Virtual Machine.
-
-For security, copy the Workspace ID and the Primary Key, set them up in our variables group, and reference them as an Environment variable in the pipeline.
-
-We are ready to run the Deploy stage of the pipeline!
-
-If everything worked as intented, we should see "1 Linux computers connected" in the Agents Management in the Log Analytics Workspace.
-
-![1 Linux Server Connected](images/serverconnected.PNG)
 
 ## Create Postman Test Suites
 For this part we will use Postman and Newman to test each endpoint of the web app available in the ```fakerestapi``` folder. We will use Postman to test the endpoints, and when we are ready we will download their definitions in .json and then use them in our project to run them using Newman in the Azure Pipeline.
