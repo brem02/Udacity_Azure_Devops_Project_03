@@ -29,17 +29,22 @@ For this project we use the following tools:
 - JMeter: For creating a Stress Test Suite and an Endurance Test Suite.
 - Azure Monitor: For configuring alerts to trigger given a condition from an App Service.
 
+To visualize the project this overview can help:
+
+<img width="443" alt="project-overview-capture" src="https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/74fa1b03-7d06-42e6-b1a7-c0ac8c99c3a6">
+
+
+
 ## Getting Started
 Due to using a Udacity Cloud Lab a Service Principal is already given.
 For this project we will perform the following steps:
 1. Install our dependencies
 2. Configure storage account and state backend for Terraform
 4. Configure Pipeline Environment
-5. Configure an Azure Log Analytics Workspace
-6. Create Postman Test Suites
-7. Create a Selenium test for a website
-8. Create a Test Suite with JMeter
-9. Enable Monitoring & Observability
+5. Create Postman Test Suites
+6. Create a Selenium test for a website
+7. Create a Test Suite with JMeter
+8. Enable Monitoring & Observability
 
 ## Install our dependencies
 For the successful run of this project we need to do the following steps:
