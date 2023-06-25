@@ -167,40 +167,35 @@ When running the tests in Azure Pipelines we can get summaries for both of them.
 
 ## Enable Monitoring & Observability
 
-In this final section, we will enable Monitoring & Observability in our Virtual Machine and App Service to observe the effects of our tests.
+In this section, we will enable Monitoring & Observability in our Virtual Machine and App Service to observe the effects of our tests.
 
 ### Azure Monitor
-We can set up alerts to fire when a resource meets certain conditions, we will set up an email to fire when requests are more or equal than 10.
+We can set up alerts to fire when a resource meets certain conditions. For example, we will set up an email to fire when requests are more or equal than 1 or 10, respectively.
 
-In udacitytest-AppService, go to Monitoring and click on Alert, then + New Rule.
+In the Azure Portal choose an AppService, go to Monitoring and click on Alert, then click + New Rule.
 
-In Condition we will select ```Requests (Platform)```, in Alert logic we will select for Operator ```Greater than or equal to``` and Threshold value as 10. Leave the rest of the configuration as is.
+In Condition we will select ```Requests (Platform)```, in Alert logic we will select for Operator ```Greater than or equal to``` and Threshold value as 1 or 10, respectively. Leave the rest of the configuration as it is.
 
-In Actions we will add an action group, then create an action group named ```actionGroupUdacity```. In Notification we will select for Notification Type ```Email/SMS message/Push/Voice.```. We will add our email, and for name we will set it as ```emailNotification```.
+In Actions we will add an action group, then create an action group named ```myActGroup```. In Notification we will select for Notification Type ```Email/SMS message/Push/Voice.``` and add our email and finally create it. 
 
-We will leave other configurations as is an jump to Review + Create. We will hit Create.
+ After adding Alert Rule Details you can hit ```Create Alert Rule```.
 
-Finally we will add our Alert Rule Details. we will set it as ```10Requests``` and leave severity as ```3 - Informational```.
+The Alert Rules should look as follows:
 
-Finally, hit ```Create Alert Rule```
+![Create_Alert_Rule](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/e3d85994-0c49-4865-8bda-0588e11ff067)
 
-The Alert Rules should look like this:
+When the alert is activated/fired, we get an email, which is posted here in 3 parts: 
 
-![Alert Rules](images/alertrules.PNG)
+![Alert_Email_Part_1](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/93619bbb-c87a-4c55-a7a4-5657e3412122)
+![Alert_Email_Part_2](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/16eb8c37-d098-4412-ae22-2a4b0f8d8b1b)
+![Alert_Email_Part_3](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/b9bc4a92-805b-473a-a3ed-8b73f457bb65)
 
-When the alert fires, we should get an email similar to this:
 
-![Email Alert](images/emailalert.PNG)
+We can also look at the requests graph available in the Azure Portal:
 
-As we selected that we should get an alert if the AppService gets 10 requests or more, let's look at the requests graph available in the Azure Portal.
+![Web_App_HTTP_404_Metrics](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/b1b733a7-0959-41f2-bd3c-91d2d7118f13)
 
-![Requests Graph](images/alertgraph.PNG)
-
-In this graph we can see that the number of requests went above 10.
-
-We can also see the severity of our alerts in the ```Alerts``` section of the App Service
-
-![Alerts Monitor](images/alertsmonitor.PNG)
+CHECKED until HERE
 
 ### Azure Log Analytics
 As we previously configured Azure Log Analytics, we can check in the Azure Portal the outputs of the Selenium Test Suite. For this we will configure custom logs.
