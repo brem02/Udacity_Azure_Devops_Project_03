@@ -157,17 +157,13 @@ We also defined an artifact that contains the logs for all Selenium runs.
 ## Create a Test Suite with JMeter
 In this step we will create both endurance tests and stress tests with Apache JMeter.
 
-Open the ```stress-test.jmx``` and ```endurance-test.jmx``` and navigate to the View Results Tree tab, run the test and then navigate to Tools -> Generate HTML Report, browse for the results file, the user.properties file and the output directory. Generate the HTML reports for both tests.
+When running the tests in Azure Pipelines we can get summaries for both of them.
 
-By running the tests in Azure Pipelines we can get summaries for both of them.
+![JMeter_EnduranceTest_Result](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/061f5c54-1482-43c3-a857-4fd138f1681c)
 
-![Stress test](images/stresstest.PNG)
 
-![Endurance test](images/endurancetest.PNG)
+![JMeter_StressTest_Result](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/b04dda46-1e1c-4033-9f2d-ae13360b9bb7)
 
-We also have JMeter Artifacts which we can download if we need
-
-![JMeter artifacts](images/jmeterartifacts.PNG)
 
 ## Enable Monitoring & Observability
 
