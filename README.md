@@ -115,25 +115,26 @@ This enables Azure Pipelines to run commands in that Virtual Machine.
 
 
 ## Create Postman Test Suites
-For this part we will use Postman and Newman to test each endpoint of the web app available in the ```fakerestapi``` folder. We will use Postman to test the endpoints, and when we are ready we will download their definitions in .json and then use them in our project to run them using Newman in the Azure Pipeline.
+For this part we will use Postman and Newman to test each endpoint of the web app available in the ```fakerestapi``` folder. We will use Postman to test the endpoints, and when we are done we will download their definitions in .json and then use them in our project to run them using Newman in the Azure Pipeline.
 
-We created both regression tests and validation tests, and an environment to store our variables. And we also defined the publishing of test results to Test Plans of Azure Devops.
+We created both regression tests and validation tests, and an environment to store our variables. Also, we defined the publishing of test results to Test Plans of Azure Devops.
 
-Something to note is that the API that we are testing (http://dummy.restapiexample.com) is quite unstable as it recieves a lot of traffic, so some calls to the endpoints might fail with a 429 error code.
+Please note, that the API that we are testing (http://dummy.restapiexample.com) is quite unstable as it recieves a lot of traffic, so some calls to the endpoints might fail with an error code and test results may vary according to the time of usage.
 
-After we run the Postman tests in our pipeline we can get Test Results in Test Plans -> Runs -> Postman Test Results (The name that we defined). We should get a result similar to this in the Run Summary page:
+After we run the Postman tests in our pipeline we can get Test Results in Test Plans -> Runs -> Postman Test Results. We get the following result in the Run Summary page:
 
-![Postman Run Summary](images/postmanTestsResults.PNG)
+![Postman_Test_Results_01](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/d9ab9f70-6b19-49dd-bdba-3c5ff952974f)
 
-We can navigate to the Test Results page to see exactly what tests passed and what failed.
+![Postman_Test_Results_02](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/966476e7-e04e-4734-99b8-d7e99dae1b63)
 
-![Postman Tests Results](images/postmanTestsResults2.PNG)
+![Postman_Test_Results_03](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/17eb6f08-bb71-4912-a8ba-588c7535eee8)
+
 
 In the Pipeline run we can check the logs of the publishing of the test results.
 
-![Postman Tests Results Pipeline logs](images/postmanTestsResults3.PNG)
+![Postman_Publishing](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/5b2cc7ea-5c77-492f-b695-d1647ebec745)
 
-Please do note that this API is not very stable, so passing test results may vary according to the time of usage.
+
 
 ## Create a Selenium test for a website
 For the next part of the project we will explain our tests that can be found on the selenium-test.py file.
