@@ -13,7 +13,7 @@
 * [Enable Monitoring & Observability](#Enable-Monitoring-&-Observability)
   * [Azure Monitor](#Azure-Monitor)
   * [Azure Log Analytics](#Azure-Log-Analytics)
-* [Wrap Up](#Wrap-Up)
+* [Conclusion](#Conclusion)
 * [Future Work](#Future-Work)
 * [References](#References)
 
@@ -195,55 +195,22 @@ We can also look at the requests graph available in the Azure Portal:
 
 ![Web_App_HTTP_404_Metrics](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/b1b733a7-0959-41f2-bd3c-91d2d7118f13)
 
-CHECKED until HERE
 
 ### Azure Log Analytics
-As we previously configured Azure Log Analytics, we can check in the Azure Portal the outputs of the Selenium Test Suite. For this we will configure custom logs.
+Using Azure Log Analytics, we can check in the Azure Portal for example the AppSercvice HTTP-Logs.
 
-To configure custom logs go to your Log Analytics Workspace -> Settings -> Custom logs -> Upload sample log.
+![Query_Web_App_HTTP_Log_Results_02](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/a9c6ae51-a5d5-4d39-a667-616e5a123e27)
 
-We will download and use the selenium-test.log artifact that we set up earlier in the pipeline, it must have logs similar to this:
+![Query_Web_App_HTTP_Log_Diagram](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/66e6d626-dec3-431d-a18a-7a2f3ba248a5)
 
-```bash
-2021-07-08 05:42:26 Browser started successfully. Navigating to the demo page to login.
-2021-07-08 05:42:27 Login successful with username standard_user and password secret_sauce
-2021-07-08 05:42:28 Sauce Labs Bike Light added to shopping cart!
-2021-07-08 05:42:28 Sauce Labs Bolt T-Shirt added to shopping cart!
-2021-07-08 05:42:28 Sauce Labs Onesie added to shopping cart!
-2021-07-08 05:42:29 Test.allTheThings() T-Shirt (Red) added to shopping cart!
-2021-07-08 05:42:29 Sauce Labs Backpack added to shopping cart!
-2021-07-08 05:42:29 Sauce Labs Fleece Jacket added to shopping cart!
-2021-07-08 05:42:29 6 items added to cart successfully.
-2021-07-08 05:42:29 Sauce Labs Bike Light removed from shopping cart!
-2021-07-08 05:42:29 Sauce Labs Bolt T-Shirt removed from shopping cart!
-2021-07-08 05:42:30 Sauce Labs Onesie removed from shopping cart!
-2021-07-08 05:42:30 Test.allTheThings() T-Shirt (Red) removed from shopping cart!
-2021-07-08 05:42:30 Sauce Labs Backpack removed from shopping cart!
-2021-07-08 05:42:30 Sauce Labs Fleece Jacket removed from shopping cart!
-2021-07-08 05:42:30 6 items removed from cart successfully.
-2021-07-08 05:42:30 Selenium Tests DONE
-```
 
-In Record delimiter we will select ```New line```.
+## Conclusion
+Finally, we can see, that our complete pipeline has been succesfully executed!
 
-In Collection paths we will select ```Linux``` and in Path we will put the path where the logs are located, in our case ```/home/george/azagent/_work/1/s/log/selenium/selenium-test.log```
-
-In Details, we will define the Custom log name as ```SeleniumTestLogs```.
-
-Finally, in Review + Create we will create the custom log.
-
-We can query it in the Logs section of Log Analytics Workspace by writing ```SeleniumTestLogs_CL```
-
-![Custom Selenium Logs](images/seleniumlogs3.PNG)
-
-## Wrap Up
-Finally, we can see that our complete pipeline is correctly executed!
-
-![Pipeline Passed](images/pipelinepassed.PNG)
+![Pipeline_Result](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/71729cf3-750e-4971-9c26-dd43bb050340)
 
 ## Future Work
-- We could cause errors or other scenarios for the AppService/VM and demonstrate those behaviors in the test suites as well as in Azure Monitor and Log Analytics.
-- We could create a VM Scale Set in Terraform and complete each of the steps with the VM Scale set.
+- We could cause errors or other scenarios for the AppService/VM and demonstrate these behaviors in the test suites as well as in Azure Monitor and Log Analytics.
 
 ## References
 - [Udacity Project Starter Files](https://video.udacity-data.com/topher/2020/June/5ed815bf_project-starter-resources/project-starter-resources.zip)
