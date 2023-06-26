@@ -197,7 +197,9 @@ We can also look at the requests graph available in the Azure Portal:
 
 
 ### Azure Log Analytics
-Using Azure Log Analytics, we can check in the Azure Portal for example the AppSercvice HTTP-Logs.
+
+Log Analytics is a tool in the Azure portal that's used to edit and run log queries against data in the Azure Monitor Logs store.
+Using this tool, we can check in the Azure Portal for example the AppSercvice HTTP-Logs.
 
 ![Query_Web_App_HTTP_Log_Results_02](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/a9c6ae51-a5d5-4d39-a667-616e5a123e27)
 
