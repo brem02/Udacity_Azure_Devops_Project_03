@@ -205,6 +205,94 @@ Using this tool, we can check in the Azure Portal for example the AppSercvice HT
 
 ![Query_Web_App_HTTP_Log_Diagram](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/66e6d626-dec3-431d-a18a-7a2f3ba248a5)
 
+Besides, we can also check the output of the Selenium Test Suite. For this we will configure custom logs.
+
+To configure custom logs you have to go to your Log Analytics Workspace -> Settings -> Custom logs -> Upload sample file.
+
+We will download selenium-test.log, that we generated earlier in the pipeline. It looks like this:
+
+2023-06-29 07:43:08 - Starting the browser...
+2023-06-29 07:43:14 - Browser started successfully.
+2023-06-29 07:43:14 - Login
+2023-06-29 07:43:14 - Navigating to the demo page to login.
+2023-06-29 07:43:16 - Login with username standard_user and password secret_sauce successful
+2023-06-29 07:43:16 - Add items
+2023-06-29 07:43:16 - Add all items to the cart
+2023-06-29 07:43:16 - Added Sauce Labs Backpack
+2023-06-29 07:43:17 - Added Sauce Labs Bike Light
+2023-06-29 07:43:17 - Added Sauce Labs Bolt T-Shirt
+2023-06-29 07:43:17 - Added Sauce Labs Fleece Jacket
+2023-06-29 07:43:17 - Added Sauce Labs Onesie
+2023-06-29 07:43:17 - Added Test.allTheThings() T-Shirt (Red)
+2023-06-29 07:43:18 - Finished testing adding items to the cart
+2023-06-29 07:43:18 - Remove items
+2023-06-29 07:43:18 - Number of items in the cart = 6
+2023-06-29 07:43:18 - Removed Sauce Labs Backpack
+2023-06-29 07:43:18 - Removed Sauce Labs Bike Light
+2023-06-29 07:43:18 - Removed Sauce Labs Bolt T-Shirt
+2023-06-29 07:43:19 - Removed Sauce Labs Fleece Jacket
+2023-06-29 07:43:19 - Removed Sauce Labs Onesie
+2023-06-29 07:43:19 - Removed Test.allTheThings() T-Shirt (Red)
+2023-06-29 07:43:19 - Finshed testing removing items from the cart
+2023-06-29 07:43:19 - Tests Completed
+2023-06-29 09:13:56 - Starting the browser...
+2023-06-29 09:14:00 - Browser started successfully.
+2023-06-29 09:14:00 - Login
+2023-06-29 09:14:00 - Navigating to the demo page to login.
+2023-06-29 09:14:03 - Login with username standard_user and password secret_sauce successful
+2023-06-29 09:14:03 - Add items
+2023-06-29 09:14:03 - Add all items to the cart
+2023-06-29 09:14:03 - Added Sauce Labs Backpack
+2023-06-29 09:14:03 - Added Sauce Labs Bike Light
+2023-06-29 09:14:03 - Added Sauce Labs Bolt T-Shirt
+2023-06-29 09:14:03 - Added Sauce Labs Fleece Jacket
+2023-06-29 09:14:03 - Added Sauce Labs Onesie
+2023-06-29 09:14:03 - Added Test.allTheThings() T-Shirt (Red)
+2023-06-29 09:14:04 - Finished testing adding items to the cart
+2023-06-29 09:14:04 - Remove items
+2023-06-29 09:14:04 - Number of items in the cart = 6
+2023-06-29 09:14:04 - Removed Sauce Labs Backpack
+2023-06-29 09:14:04 - Removed Sauce Labs Bike Light
+2023-06-29 09:14:04 - Removed Sauce Labs Bolt T-Shirt
+2023-06-29 09:14:04 - Removed Sauce Labs Fleece Jacket
+2023-06-29 09:14:04 - Removed Sauce Labs Onesie
+2023-06-29 09:14:04 - Removed Test.allTheThings() T-Shirt (Red)
+2023-06-29 09:14:04 - Finshed testing removing items from the cart
+2023-06-29 09:14:04 - Tests Completed
+2023-06-29 09:30:37 - Starting the browser...
+2023-06-29 09:30:38 - Browser started successfully.
+2023-06-29 09:30:38 - Login
+2023-06-29 09:30:38 - Navigating to the demo page to login.
+2023-06-29 09:30:39 - Login with username standard_user and password secret_sauce successful
+2023-06-29 09:30:39 - Add items
+2023-06-29 09:30:39 - Add all items to the cart
+2023-06-29 09:30:39 - Added Sauce Labs Backpack
+2023-06-29 09:30:39 - Added Sauce Labs Bike Light
+2023-06-29 09:30:39 - Added Sauce Labs Bolt T-Shirt
+2023-06-29 09:30:39 - Added Sauce Labs Fleece Jacket
+2023-06-29 09:30:39 - Added Sauce Labs Onesie
+2023-06-29 09:30:39 - Added Test.allTheThings() T-Shirt (Red)
+2023-06-29 09:30:40 - Finished testing adding items to the cart
+2023-06-29 09:30:40 - Remove items
+2023-06-29 09:30:40 - Number of items in the cart = 6
+2023-06-29 09:30:40 - Removed Sauce Labs Backpack
+2023-06-29 09:30:40 - Removed Sauce Labs Bike Light
+2023-06-29 09:30:40 - Removed Sauce Labs Bolt T-Shirt
+2023-06-29 09:30:40 - Removed Sauce Labs Fleece Jacket
+2023-06-29 09:30:40 - Removed Sauce Labs Onesie
+2023-06-29 09:30:40 - Removed Test.allTheThings() T-Shirt (Red)
+2023-06-29 09:30:40 - Finshed testing removing items from the cart
+2023-06-29 09:30:40 - Tests Completed
+
+In Record delimiter we will select New line.
+
+In Collection paths we will select Linux and set the path where the logs are located on the VM, in our case /home/devopsagent/myagent/azagent/_work/1/s/log/selenium/selenium-test.log
+
+In Details, we will define the Custom log name as SeleniumTestLogs and afterwards we create it:
+
+![Custom_Table_Log_Analytics](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/ee8d6458-6d99-46db-b9f4-d2d190ef232d)
+
+We can query it in the Logs section of Log Analytics Workspace by writing SeleniumTestLogs_CL:
 
 ## Conclusion
 Finally, we can see, that our complete pipeline has been succesfully executed!
