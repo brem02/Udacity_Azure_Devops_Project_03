@@ -113,7 +113,7 @@ stages:
                   displayName: "Deploy Azure WebApp"
                   inputs:
                     azureSubscription: "myServiceConnection"
-                    appType: "webAppLinux"
+                    appType: "webAppWindows"
                     appName: "myApplication-AppService-AS" 
                     #"Web-App-Project-3"
                     package: "$(Pipeline.Workspace)/fakerestapi/fakerestapi-$(Build.BuildId).zip"
