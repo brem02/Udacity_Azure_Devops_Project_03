@@ -1,4 +1,11 @@
 name: Azure Pipelines
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'myServiceConnection'
+    appType: 'webApp'
+    WebAppName: 
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
 
 stages:
   - stage: "Provisioning"
