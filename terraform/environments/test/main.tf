@@ -8,10 +8,10 @@ provider "azurerm" {
 }
 terraform {
   backend "azurerm" {
-    storage_account_name = "tstate11641"
+    storage_account_name = "tstate9524"
     container_name       = "tstate"
-    key                  = "f12CLMbKcwmGLm352u7QUAkXdfCnMQ7am2MxAzPUEMYuS6ciK32H+dxzCNFSJmBFVRXrw1lIqko6+AStfhyVGw=="
-    access_key           = "f12CLMbKcwmGLm352u7QUAkXdfCnMQ7am2MxAzPUEMYuS6ciK32H+dxzCNFSJmBFVRXrw1lIqko6+AStfhyVGw=="
+    key                  = "Dt85ifIFLVOxniuh8QEs6YgQz/cbjfZ0KawFjL0HhHdEgjVy0cprYhHBpBPP9DkpOK/CKmzPsjyH+ASt1Fh9Mw=="
+    access_key           = "Dt85ifIFLVOxniuh8QEs6YgQz/cbjfZ0KawFjL0HhHdEgjVy0cprYhHBpBPP9DkpOK/CKmzPsjyH+ASt1Fh9Mw=="
   }
 }
 module "resource_group" {
