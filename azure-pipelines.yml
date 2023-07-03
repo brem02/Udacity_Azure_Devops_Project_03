@@ -108,12 +108,13 @@ stages:
             deploy:
               steps:
                 - task: AzureRmWebAppDeployment@4
-                  displayName: "Set Connection for Azure WebApp"
+                  displayName: "Deploy the Azure WebApp"
                   inputs:
                     ConnectionType: 'AzureRM'
+                    azureSubscription: "myServiceConnection"
                     appType: 'webApp'
                     WebAppName: 'myApplication-AppService-AS'
-                    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+                    packageForLinux: "$(Pipeline.Workspace)/fakerestapi/fakerestapi-$(Build.BuildId).zip"
                 - task: AzureWebApp@1
                   displayName: "Deploy Azure WebApp"
                   inputs:
