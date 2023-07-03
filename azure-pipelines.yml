@@ -1,10 +1,4 @@
 stages:
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    appType: 'webApp'
-    WebAppName: 'myApplication-AppService-AS'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
   - stage: "Provisioning"
     jobs:
       - job: provision_infrastructure
@@ -113,6 +107,13 @@ stages:
           runOnce:
             deploy:
               steps:
+                - task: AzureRmWebAppDeployment@4
+                  displayName: "Set Connection for Azure WebApp"
+                  inputs:
+                    ConnectionType: 'AzureRM'
+                    appType: 'webApp'
+                    WebAppName: 'myApplication-AppService-AS'
+                    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
                 - task: AzureWebApp@1
                   displayName: "Deploy Azure WebApp"
                   inputs:
