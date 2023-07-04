@@ -81,7 +81,7 @@ stages:
             displayName: "Publish FakeRestAPI"
             inputs:
               #targetPath: "$(Build.ArtifactStagingDirectory)/fakerestapi-$(Build.BuildId).zip"
-              targetPath: "$(Build.ArtifactStagingDirectory)/fakerestapi"
+              targetPath: $(System.DefaultWorkingDirectory)/fakerestapi
               artifactName: "fakerestapi"
 
           - task: ArchiveFiles@2
