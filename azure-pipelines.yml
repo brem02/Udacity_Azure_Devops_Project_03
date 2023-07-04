@@ -80,7 +80,8 @@ stages:
           - task: PublishPipelineArtifact@1
             displayName: "Publish FakeRestAPI"
             inputs:
-              targetPath: "$(Build.ArtifactStagingDirectory)/fakerestapi-$(Build.BuildId).zip"
+              #targetPath: "$(Build.ArtifactStagingDirectory)/fakerestapi-$(Build.BuildId).zip"
+              targetPath: "$(Build.ArtifactStagingDirectory)/fakerestapi"
               artifactName: "fakerestapi"
 
           - task: ArchiveFiles@2
