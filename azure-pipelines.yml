@@ -68,20 +68,20 @@ stages:
         displayName: "Build Artifacts"
         pool: myAgentPool
         steps:
-          #- task: ArchiveFiles@2
-            #displayName: "Archive FakeRestAPI"
-            #inputs:
-              #rootFolderOrFile: "$(System.DefaultWorkingDirectory)/fakerestapi"
-              #includeRootFolder: false
-              #archiveType: "zip"
-              #archiveFile: "$(Build.ArtifactStagingDirectory)/fakerestapi-$(Build.BuildId).zip"
-              #verbose: true
+          - task: ArchiveFiles@2
+            displayName: "Archive FakeRestAPI"
+            inputs:
+              rootFolderOrFile: "$(System.DefaultWorkingDirectory)/fakerestapi"
+              includeRootFolder: false
+              archiveType: "zip"
+              archiveFile: "$(Build.ArtifactStagingDirectory)/fakerestapi-$(Build.BuildId).zip"
+              verbose: true
 
           - task: PublishPipelineArtifact@1
             displayName: "Publish FakeRestAPI"
             inputs:
-              #targetPath: "$(Build.ArtifactStagingDirectory)/fakerestapi-$(Build.BuildId).zip"
-              targetPath: $(System.DefaultWorkingDirectory)/fakerestapi
+              targetPath: "$(Build.ArtifactStagingDirectory)/fakerestapi-$(Build.BuildId).zip"
+              #targetPath: $(System.DefaultWorkingDirectory)/fakerestapi
               artifactName: "fakerestapi"
 
           - task: ArchiveFiles@2
