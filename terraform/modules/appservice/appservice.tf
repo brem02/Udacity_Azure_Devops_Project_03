@@ -17,5 +17,6 @@ resource "azurerm_app_service" "test" {
 
   app_settings = {
     "WEBSITE_RUN_FROM_PACKAGE" = 0
+    "SCM_DO_BUILD_DURING_DEPLOYMENT" = true
   }
 }
