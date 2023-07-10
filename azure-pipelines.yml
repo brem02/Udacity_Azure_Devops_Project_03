@@ -71,8 +71,8 @@ stages:
           - task: ArchiveFiles@2
             displayName: "Archive FakeRestAPI"
             inputs:
-              #rootFolderOrFile: "$(System.DefaultWorkingDirectory)/fakerestapi"
-              rootFolderOrFile: "(System.DefaultWorkingDirectory)/automatedtesting/jmeter/fakerestapi"
+              rootFolderOrFile: "$(System.DefaultWorkingDirectory)/fakerestapi"
+              #rootFolderOrFile: "(System.DefaultWorkingDirectory)/automatedtesting/jmeter/fakerestapi"
               includeRootFolder: false
               archiveType: "zip"
               archiveFile: "$(Build.ArtifactStagingDirectory)/fakerestapi-$(Build.BuildId).zip"
@@ -123,7 +123,7 @@ stages:
                   displayName: "Deploy Azure WebApp"
                   inputs:
                     azureSubscription: "myServiceConnection"
-                    appType: "webAppWindows"#"webAppLinux"#
+                    appType: webApp #"webAppLinux"#
                     appName: "Web-App-Project-3"#"myApplication-AppService-AS" 
                     #"Web-App-Project-3"
                     package: "$(Pipeline.Workspace)/fakerestapi/fakerestapi-$(Build.BuildId).zip"
