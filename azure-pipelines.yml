@@ -111,21 +111,12 @@ stages:
           runOnce:
             deploy:
               steps:
-                #- task: AzureRmWebAppDeployment@4
-                  #displayName: "Deploy the Azure WebApp"
-                  #inputs:
-                    #ConnectionType: 'AzureRM'
-                    #azureSubscription: "myServiceConnection"
-                    #appType: 'webApp'
-                    #WebAppName: 'myApplication-AppService-AS'
-                    #packageForLinux: "$(Pipeline.Workspace)/fakerestapi/fakerestapi-$(Build.BuildId).zip"
                 - task: AzureWebApp@1
                   displayName: "Deploy Azure WebApp"
                   inputs:
                     azureSubscription: "myServiceConnection"
-                    appType: webApp #"webAppLinux"#
-                    appName: "Web-App-Project-3"#"myApplication-AppService-AS" 
-                    #"Web-App-Project-3"
+                    appType: webApp #"webAppLinux"
+                    appName: "Web-App-Project-3"
                     package: "$(Pipeline.Workspace)/fakerestapi/fakerestapi-$(Build.BuildId).zip"
                     deploymentMethod: "auto"
 
@@ -232,4 +223,43 @@ stages:
           inputs:
             targetPath: '$(System.DefaultWorkingDirectory)/log/jmeter'
             artifactName: 'drop-jmeter-logs'
- 
+
+      - job: TestNewman
+        displayName: Test Postman with Newman CLI
+        pool: myAgentPool 
+        steps: 
+        - task: NodeTool@0
+          displayName: Install Node v12.X
+          inputs:
+            versionSpec: '12.x'
+        - bash: |
+            npm install -g newman
+            mkdir -p log/newman
+          displayName: Install Newman CLI
+        - bash: |
+            newman run automatedtesting/postman/regressionTestUdacity.postman_collection.json \
+                       -e automatedtesting/postman/testingenvironment.postman_environment.json \
+                       --reporters cli,junit \
+                       --reporter-junit-export log/newman/regressionTestUdacity.xml \
+                       --suppress-exit-code
+          displayName: Run Regression Test
+        - bash: |
+            newman run automatedtesting/postman/validationTestUdacity.postman_collection.json \
+                       -e automatedtesting/postman/testingenvironment.postman_environment.json \
+                       --reporters cli,junit \
+                       --reporter-junit-export log/newman/validationTestUdacity.xml \
+                       --suppress-exit-code
+          displayName: Run Validation Test
+        - task: PublishPipelineArtifact@1
+          displayName: Publish Newman logs
+          inputs:
+            targetPath: '$(System.DefaultWorkingDirectory)/log/newman'
+            artifactName: 'drop-newman-logs'
+        - task: PublishTestResults@2
+          displayName: 'Publish Postman Test Results'
+          inputs:
+            testRunner: 'JUnit'
+            searchFolder: '$(System.DefaultWorkingDirectory)/log/newman'
+            testResultsFiles: '*.xml'
+            mergeTestResults: true
+            testRunTitle: 'Postman Test Results'
