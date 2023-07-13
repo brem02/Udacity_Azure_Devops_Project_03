@@ -159,10 +159,11 @@ In this step we will create both endurance tests and stress tests with Apache JM
 
 When running the tests in Azure Pipelines we can get summaries for both of them.
 
-![JMeter_EnduranceTest_Result](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/061f5c54-1482-43c3-a857-4fd138f1681c)
+![JMeter_EnduranceTest_Result](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/295a748c-4a09-4c08-b014-70025cadaa7d)
 
 
-![JMeter_StressTest_Result](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/b04dda46-1e1c-4033-9f2d-ae13360b9bb7)
+![JMeter_StressTest_Result](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/b7971a0b-3fc5-4c9f-bc1b-17211562cd2f)
+
 
 
 ## Enable Monitoring & Observability
