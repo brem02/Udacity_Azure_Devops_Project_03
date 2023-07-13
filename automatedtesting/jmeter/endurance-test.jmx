@@ -172,8 +172,7 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="hostname" elementType="Argument">
             <stringProp name="Argument.name">hostname</stringProp>
-            <stringProp name="Argument.value">Web-App-Project-3.azurewebsites.net</stringProp>
-            #<stringProp name="Argument.value">myApplication-AppService-AS.azurewebsites.net</stringProp>
+            <stringProp name="Argument.value">web-app-project-3.azurewebsites.net</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
