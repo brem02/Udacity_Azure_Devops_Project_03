@@ -159,7 +159,36 @@ stages:
                       sudo pip3 install selenium
 
   - stage: Test
-    jobs: TestJMeter
+    jobs:
+      - deployment: test_vm
+        displayName: Test on Virtual Machine
+        environment:
+          name: 'Test'
+          resourceType: VirtualMachine
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+              - bash: |
+                  cd $(Pipeline.Workspace)/drop-selenium
+                  unzip -o selenium-$(Build.BuildId).zip
+              
+                  sudo mkdir -p /var/log/selenium
+                  sudo chmod 777 /var/log/selenium
+                  python3 -u selenium-test.py 2>&1 | sudo tee -a /var/log/selenium/selenium-test.log
+
+                  cd $(System.DefaultWorkingDirectory)
+                  mkdir -p log/selenium
+              
+                  sudo cp /var/log/selenium/selenium-test.log log/selenium/selenium-test.log
+                displayName: Run Selenium Tests
+              - task: PublishPipelineArtifact@1
+                displayName: Publish Selenium Logs
+                inputs:
+                  targetPath: '$(System.DefaultWorkingDirectory)/log/selenium/selenium-test.log'
+                  artifactName: 'drop-selenium-logs'
+
+      - job: TestJMeter
         displayName: Test JMeter
         pool: myAgentPool
         steps:
@@ -203,3 +232,4 @@ stages:
           inputs:
             targetPath: '$(System.DefaultWorkingDirectory)/log/jmeter'
             artifactName: 'drop-jmeter-logs'
+ 
