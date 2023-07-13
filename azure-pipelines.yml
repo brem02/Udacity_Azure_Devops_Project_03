@@ -159,7 +159,7 @@ stages:
                       sudo pip3 install selenium
 
   - stage: Test
-    job: TestJMeter
+    jobs: TestJMeter
         displayName: Test JMeter
         pool: myAgentPool
         steps:
