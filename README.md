@@ -161,9 +161,11 @@ When running the tests in Azure Pipelines we can get summaries for both of them.
 
 ![JMeter_EnduranceTest_Result](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/295a748c-4a09-4c08-b014-70025cadaa7d)
 
+![Endurance_Test_Overview](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/3bc1702f-c51f-472e-b59f-5e1e06c19576)
 
 ![JMeter_StressTest_Result](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/b7971a0b-3fc5-4c9f-bc1b-17211562cd2f)
 
+![Stress_Test_Overview](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/f5c350ea-56fe-4cfb-a99c-5f94dc10df97)
 
 
 ## Enable Monitoring & Observability
