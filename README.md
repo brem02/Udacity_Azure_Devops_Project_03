@@ -295,7 +295,9 @@ In Details, we will define the Custom log name as Selenium and afterwards we cre
 
 ![Log_Analytics_Table](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/0d21fc79-32d8-4ec7-9259-c81f0eaef5a7)
 
-Then we have to create the Linux Agent for the Log Analytics Workspace:
+Then we have to create the Linux Agent for the Log Analytics Workspace, using the command provided by Log Analytics section and running it on the VM:
+
+![Command_Log_Agent](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/6ebfc6f3-f684-438f-9c10-60f68fffcf59)
 
 ![Log_Analytics_Agent](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/33c66a60-43a6-49bc-a18c-349899599da3)
 
