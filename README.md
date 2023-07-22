@@ -291,11 +291,18 @@ In Record delimiter we will select New line.
 
 In Collection paths we will select Linux and set the path where the logs are located on the VM, in our case /home/devopsagent/myagent/azagent/_work/1/s/log/selenium/selenium-test.log
 
-In Details, we will define the Custom log name as SeleniumTestLogs and afterwards we create it:
+In Details, we will define the Custom log name as Selenium and afterwards we create it:
 
-![Custom_Table_Log_Analytics](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/ee8d6458-6d99-46db-b9f4-d2d190ef232d)
+![Log_Analytics_Table](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/0d21fc79-32d8-4ec7-9259-c81f0eaef5a7)
 
-We can query it in the Logs section of Log Analytics Workspace by writing SeleniumTestLogs_CL:
+Then we have to create the Linux Agent for the Log Analytics Workspace:
+
+![Log_Analytics_Agent](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/33c66a60-43a6-49bc-a18c-349899599da3)
+
+Afterwards we can query the data in the Logs section of Log Analytics Workspace by writing Selenium_CL:
+
+![Selenium_Test_Log](https://github.com/brem02/Udacity_Azure_Devops_Project_03/assets/122722304/fa2bdf6b-be0b-40e1-a746-217f0c2f76e1)
+
 
 ## Conclusion
 Finally, we can see, that our complete pipeline has been succesfully executed!
