@@ -34,9 +34,9 @@ stages:
               workingDirectory: "$(System.DefaultWorkingDirectory)/terraform/environments/test/"
               backendServiceArm: "myServiceConnection"
               backendAzureRmResourceGroupName: "Azuredevops"
-              backendAzureRmStorageAccountName: "tstate28717"
+              backendAzureRmStorageAccountName: "tstate7501"
               backendAzureRmContainerName: "tstate"
-              backendAzureRmKey: "LbZzb/crLN6DDB082yvGBJnIsM7GW70GqUlc4NF8DHBYUa7WUZF2VVP6VMFRYRa/u1+PvvBcOLEp+ASt64Ziiw=="
+              backendAzureRmKey: "rfqtdRslT1cxD6lQTjQJbOg1BUyfeERSwK0OC3unodvQyjyZnf+duufwvD3Kh7PVSvd6aG0QCEAk+AStzBuRLA=="
 
           - task: TerraformTaskV1@0
             displayName: "Terraform Validate"
@@ -178,3 +178,88 @@ stages:
                 inputs:
                   targetPath: '$(System.DefaultWorkingDirectory)/log/selenium/selenium-test.log'
                   artifactName: 'drop-selenium-logs'
+
+      - job: TestJMeter
+        displayName: Test JMeter
+        pool: myAgentPool
+        steps:
+        - bash: |
+            sudo apt-get install openjdk-11-jre-headless -y
+            java -version
+            wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.4.tgz -O jmeter.tgz
+            tar xzvf jmeter.tgz
+            mkdir -p log/jmeter
+          displayName: Install JMeter
+        - bash: |
+            apache-jmeter-5.4/bin/jmeter -n -t automatedtesting/jmeter/stress-test.jmx \
+                                         -l log/jmeter/stress-test-result.csv \
+                                         -e -f -o log/jmeter/stress-test-html-report \
+                                         -j log/jmeter/jmeter-stress-test.log
+          displayName: JMeter Stress Test
+        - bash: |
+            apache-jmeter-5.4/bin/jmeter -n -t automatedtesting/jmeter/endurance-test.jmx \
+                                         -l log/jmeter/endurance-test-result.csv \
+                                         -e -f -o log/jmeter/endurance-test-html-report \
+                                         -j log/jmeter/jmeter-endurance-test.log
+          displayName: JMeter Endurance Test
+        - task: ArchiveFiles@2
+          displayName: Save JMeter Stress Test Report to Artifact
+          inputs:
+            rootFolderOrFile: '$(System.DefaultWorkingDirectory)/log/jmeter/stress-test-html-report'
+            includeRootFolder: false
+            archiveType: 'zip'
+            archiveFile: '$(System.DefaultWorkingDirectory)/log/jmeter/stress-test-html-report-$(Build.BuildId).zip'
+            verbose: true
+        - task: ArchiveFiles@2
+          displayName: Save JMeter Endurance Test Report to Artifact
+          inputs:
+            rootFolderOrFile: '$(System.DefaultWorkingDirectory)/log/jmeter/endurance-test-html-report'
+            includeRootFolder: false
+            archiveType: 'zip'
+            archiveFile: '$(System.DefaultWorkingDirectory)/log/jmeter/endurance-test-html-report-$(Build.BuildId).zip'
+            verbose: true
+        - task: PublishPipelineArtifact@1
+          displayName: Publish JMeter Logs
+          inputs:
+            targetPath: '$(System.DefaultWorkingDirectory)/log/jmeter'
+            artifactName: 'drop-jmeter-logs'
+
+      - job: TestNewman
+        displayName: Test Postman with Newman CLI
+        pool: myAgentPool 
+        steps: 
+        - task: NodeTool@0
+          displayName: Install Node v12.X
+          inputs:
+            versionSpec: '12.x'
+        - bash: |
+            npm install -g newman
+            mkdir -p log/newman
+          displayName: Install Newman CLI
+        - bash: |
+            newman run automatedtesting/postman/regressionTestUdacity.postman_collection.json \
+                       -e automatedtesting/postman/testingenvironment.postman_environment.json \
+                       --reporters cli,junit \
+                       --reporter-junit-export log/newman/regressionTestUdacity.xml \
+                       --suppress-exit-code
+          displayName: Run Regression Test
+        - bash: |
+            newman run automatedtesting/postman/validationTestUdacity.postman_collection.json \
+                       -e automatedtesting/postman/testingenvironment.postman_environment.json \
+                       --reporters cli,junit \
+                       --reporter-junit-export log/newman/validationTestUdacity.xml \
+                       --suppress-exit-code
+          displayName: Run Validation Test
+        - task: PublishPipelineArtifact@1
+          displayName: Publish Newman logs
+          inputs:
+            targetPath: '$(System.DefaultWorkingDirectory)/log/newman'
+            artifactName: 'drop-newman-logs'
+        - task: PublishTestResults@2
+          displayName: 'Publish Postman Test Results'
+          inputs:
+            testRunner: 'JUnit'
+            searchFolder: '$(System.DefaultWorkingDirectory)/log/newman'
+            testResultsFiles: '*.xml'
+            mergeTestResults: true
+            testRunTitle: 'Postman Test Results'
