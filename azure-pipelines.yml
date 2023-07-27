@@ -149,8 +149,7 @@ stages:
                       sudo pip3 install --upgrade pip
                       sudo pip3 install selenium
 - stage: Test
-  jobs:
-      - job: TestNewman
+    - job: TestNewman
         displayName: Test Postman with Newman CLI
         pool: myAgentPool 
         steps: 
