@@ -150,7 +150,7 @@ stages:
                       sudo pip3 install selenium
 
   - stage: Test
-      - job: TestNewman
+      job: TestNewman
         displayName: Test Postman with Newman CLI
         pool: myAgentPool 
         steps: 
