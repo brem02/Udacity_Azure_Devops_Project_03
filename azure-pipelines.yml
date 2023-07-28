@@ -245,8 +245,9 @@ stages:
                        #--delay-request 5000 \
           displayName: Run Regression Test
         - bash: |
-            newman run automatedtesting/postman/validationTestUdacity.postman_collection.json \
-                       -e automatedtesting/postman/testingenvironment.postman_environment.json \
+            #newman run automatedtesting/postman/validationTestUdacity.postman_collection.json \
+             newman run automatedtesting/postman/StarterAPIs.json \
+                       #-e automatedtesting/postman/testingenvironment.postman_environment.json \
                        --reporters cli,junit \
                        --reporter-junit-export log/newman/validationTestUdacity.xml \
                        --suppress-exit-code
