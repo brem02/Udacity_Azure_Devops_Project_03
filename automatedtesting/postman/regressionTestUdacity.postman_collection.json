@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "Create Employee",
+			"name": "Get All Employees",
 			"event": [
 				{
 					"listen": "test",
@@ -15,34 +15,24 @@
 							"pm.test(\"Successful response\", function () {\r",
 							"    pm.expect(pm.response.text()).to.include(\"success\");\r",
 							"});\r",
-							"var json = pm.response.json();\r",
-							"pm.environment.set(\"id\", json.data.id);"
+							""
 						],
 						"type": "text/javascript"
 					}
 				}
 			],
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"{{name}}\",\r\n    \"salary\": \"{{salary}}\",\r\n    \"age\": \"{{age}}\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
-					"raw": "{{url}}/api/{{version}}/create",
+					"raw": "{{url}}/api/{{version}}/employees",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"api",
 						"{{version}}",
-						"create"
+						"employees"
 					]
 				}
 			},
@@ -82,7 +72,7 @@
 			"response": []
 		},
 		{
-			"name": "Update Employee",
+			"name": "Get All Employees",
 			"event": [
 				{
 					"listen": "test",
@@ -90,41 +80,32 @@
 						"exec": [
 							"pm.test(\"Successful response\", function () {\r",
 							"    pm.expect(pm.response.text()).to.include(\"success\");\r",
-							"});"
+							"});\r",
+							""
 						],
 						"type": "text/javascript"
 					}
 				}
 			],
 			"request": {
-				"method": "PUT",
+				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"{{new_name}}\",\r\n    \"salary\": \"{{new_salary}}\",\r\n    \"age\": \"{{new_age}}\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
-					"raw": "{{url}}/api/{{version}}/update/{{id}}",
+					"raw": "{{url}}/api/{{version}}/employees",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"api",
 						"{{version}}",
-						"update",
-						"{{id}}"
+						"employees"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Delete Employee",
+			"name": "Get All Employees",
 			"event": [
 				{
 					"listen": "test",
@@ -132,25 +113,25 @@
 						"exec": [
 							"pm.test(\"Successful response\", function () {\r",
 							"    pm.expect(pm.response.text()).to.include(\"success\");\r",
-							"});"
+							"});\r",
+							""
 						],
 						"type": "text/javascript"
 					}
 				}
 			],
 			"request": {
-				"method": "DELETE",
+				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/api/{{version}}/delete/{{id}}",
+					"raw": "{{url}}/api/{{version}}/employees",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"api",
 						"{{version}}",
-						"delete",
-						"{{id}}"
+						"employees"
 					]
 				}
 			},
