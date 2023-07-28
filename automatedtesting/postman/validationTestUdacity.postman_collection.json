@@ -41,7 +41,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/api/{{version}}/employees",
+					"raw": "{{url}}/api/{{version}}/employee/1",
 					"host": [
 						"{{url}}"
 					],
