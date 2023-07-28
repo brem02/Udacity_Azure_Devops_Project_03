@@ -242,6 +242,7 @@ stages:
                        --reporters cli,junit \
                        --reporter-junit-export log/newman/regressionTestUdacity.xml \
                        --suppress-exit-code
+                       --delay-request 5000 \
           displayName: Run Regression Test
         - bash: |
             newman run automatedtesting/postman/validationTestUdacity.postman_collection.json \
@@ -249,6 +250,7 @@ stages:
                        --reporters cli,junit \
                        --reporter-junit-export log/newman/validationTestUdacity.xml \
                        --suppress-exit-code
+                       --delay-request 5000 \
           displayName: Run Validation Test
         - task: PublishPipelineArtifact@1
           displayName: Publish Newman logs
